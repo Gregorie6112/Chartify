@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Navbar, Nav} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import NavBar from './Navbar.jsx';
 
 class App extends React.Component {
@@ -15,7 +15,10 @@ class App extends React.Component {
       <>
       <NavBar />
       <Container className="main-app" fluid>
-        APP
+        <Row className="mainSection">
+          <Col className="chartSection" xs={9} md={9} lg={10}></Col>
+          <Col className="buySection" ></Col>
+        </Row>
       </Container>
       </>
     )

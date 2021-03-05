@@ -4,6 +4,7 @@
   padding: 0px;
   color: white;
 }
+/*Navbar styling*/
 .navColor {
   background-color: #202020;
   padding-top: 0px;
@@ -19,4 +20,27 @@
 .changeNavColor:hover {
   color: rgb(0, 241, 161) !important;
   font-family: 'Roboto', sans-serif;
+}
+/*Navbar styling*/
+
+/*Navbar styling*/
+.mainSection {
+  height: 100%;
+}
+
+.chartSection {
+  background-color: #202020;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+  margin-right: 1.0rem;
+  padding: 0px;
+}
+
+.buySection {
+  background-color: #202020;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-right: 2rem;
+  padding: 0px;
 }
