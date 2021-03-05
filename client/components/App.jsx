@@ -1,6 +1,6 @@
 import React from 'react';
-import {Container} from 'react-bootstrap';
-import '../css/App.css';
+import {Container, Navbar, Nav} from 'react-bootstrap';
+import NavBar from './Navbar.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +12,12 @@ class App extends React.Component {
 
   render() {
     return(
-      <Container className="main-app" fluid>App</Container>
+      <>
+      <NavBar />
+      <Container className="main-app" fluid>
+        APP
+      </Container>
+      </>
     )
   }
 };

@@ -1,4 +1,22 @@
 .main-app {
   height: 100vh;
   background-color: #2D2D2D;
+  padding: 0px;
+  color: white;
+}
+.navColor {
+  background-color: #202020;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+.changeNavColor {
+  margin-right: 2rem !important;
+  color: white !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+.changeNavColor:hover {
+  color: rgb(0, 241, 161) !important;
+  font-family: 'Roboto', sans-serif;
 }
