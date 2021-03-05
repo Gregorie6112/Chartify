@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, '', '')));
+app.use(express.static(path.join(__dirname, '..', '/public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
