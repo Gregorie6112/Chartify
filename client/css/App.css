@@ -23,7 +23,7 @@
 }
 /*Navbar styling*/
 
-/*Navbar styling*/
+/*App component*/
 .mainSection {
   height: 100%;
 }
@@ -43,4 +43,45 @@
   margin-bottom: 3rem;
   margin-right: 2rem;
   padding: 0px;
+}
+/*App component*/
+
+/*Buy Section component*/
+.tickerSymbol{
+  height: fit-content;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 13%;
+}
+
+.buyButton{
+  height: 100%;
+  background: #42EC18;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 5%;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 13%;
+  color: white;
+  border: 0px;
+  padding: 10px;
+}
+
+.sellButtonHolder {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #3D3D3D;
+}
+
+.sellButton{
+  background: #FF2156;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 5%;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 13%;
+  color: white;
+  border: 0px;
+  padding: 10px;
 }

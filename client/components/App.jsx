@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import NavBar from './Navbar.jsx';
+import BuySection from './BuySection.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -16,8 +17,10 @@ class App extends React.Component {
       <NavBar />
       <Container className="main-app" fluid>
         <Row className="mainSection">
-          <Col className="chartSection" xs={9} md={9} lg={10}></Col>
-          <Col className="buySection" ></Col>
+          <Col className="chartSection" xs={10} md={9} lg={10}></Col>
+          <Col className="buySection" >
+            <BuySection />
+          </Col>
         </Row>
       </Container>
       </>
