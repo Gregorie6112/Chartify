@@ -13,12 +13,22 @@ app.use(bodyParser.json());
 app.get('/tickers', (req, res) => {
   db.find({})
     .then((data) => {
-      res.status(200).send(data)
+      res.status(200).send(data);
     })
     .catch((err) => {
-      res.status(400).send(err)
+      res.status(400).send(err);
     })
 });
+app.get('/oneticker/:ticker', (req, res) => {
+  let body = req.params;
+  db.find({ticker: body.ticker.toUpperCase()})
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    })
+})
 app.post('/ticker', (req, res) => {
   db.create(req.body)
     .then(() => {

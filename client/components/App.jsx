@@ -117,7 +117,17 @@ class App extends React.Component {
   }
   clickedTicker(clickedName) {
     // NAME OF TICKER CLICKED ON WORKING SEND IT BACKEND
-    console.log(clickedName)
+    Axios.get(`/oneticker/${clickedName}`)
+      .then(({data}) => {
+        this.setState({
+          chart: clickedName,
+          x: data[0].xAxis,
+          y: data[0].yAxis
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   render() {
     return(
