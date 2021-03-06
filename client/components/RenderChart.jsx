@@ -22,7 +22,7 @@ const RenderChart = (props) => {
         color: 'white'
       }
     }}
-    config= {{responsive: true}}
+    config= {{responsive: true, scrollZoom: true}}
     style= {{width: "100%", height: "100%"}}
     />
   )

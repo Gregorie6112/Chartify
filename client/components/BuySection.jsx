@@ -5,7 +5,7 @@ import RenderTicker from './RenderTicker.jsx';
 const BuySection = (props) => {
   return (
     <>
-      <Col className="tickerSymbol">{(props.ticker.length > 0) ? props.ticker : 'Symbol'}</Col>
+      <Col className="tickerSymbol">{(props.ticker.length > 0) ? `$${props.ticker}` : 'Symbol'}</Col>
       <Col className="buyButtonHolder">
         <button className="buyButton">BUY</button>
       </Col>

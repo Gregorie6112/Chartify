@@ -57,7 +57,10 @@
   font-size: 2rem;
   margin-bottom: 13%;
 }
-
+.tickerSymbol:hover{
+  color:rgb(0, 241, 161);
+  transition: all 1s ease-in-out;
+}
 .buyButton{
   height: 100%;
   background: #42EC18;
