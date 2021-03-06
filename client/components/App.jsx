@@ -36,15 +36,26 @@ class App extends React.Component {
   }
   updateBackend(string) {
     let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${string}&apikey=KGGKYTO460K54GFB`;
+    if (string === 'BTC') {
+      APIcall = `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=CNY&apikey=KGGKYTO460K54GFB`;
+    }
     let xAxis = [];
     let yAxis = [];
     Axios.get(APIcall)
       .then(({ data }) => {
         console.log(data)
         let newData = data["Time Series (Daily)"];
+        if (string === 'BTC') {
+          newData = data["Time Series (Digital Currency Daily)"];
+        }
         for (var key in newData) {
-          xAxis.push(key.split(" ")[0]);
-          yAxis.push(newData[key]["2. high"]);
+          if (string === 'BTC') {
+            xAxis.push(key);
+            yAxis.push(newData[key]["2b. high (USD)"])
+          } else {
+            xAxis.push(key.split(" ")[0]);
+            yAxis.push(newData[key]["2. high"]);
+          }
         }
         this.setState({
           chart: string,
@@ -63,7 +74,7 @@ class App extends React.Component {
   }
   getData(event) {
     if (event.key === 'Enter') {
-      let typedValue = document.getElementById('typedValue').value;
+      let typedValue = document.getElementById('typedValue').value.toUpperCase();
       document.getElementById('typedValue').value = '';
       if (this.state.tickers.indexOf(typedValue) !== -1 ) {
         this.updateBackend(typedValue)
