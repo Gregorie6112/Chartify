@@ -17,17 +17,58 @@ class App extends React.Component {
     }
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
+    this.updateBackend = this.updateBackend.bind(this);
+  }
+  componentDidMount() {
+    let tickersInDb = [];
+    Axios.get('/tickers')
+      .then(({data}) => {
+        data.map((el, index) => {
+          tickersInDb.push(el.ticker)
+        })
+        this.setState({
+          tickers: tickersInDb
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  updateBackend(string) {
+    let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${typedValue}&apikey=KGGKYTO460K54GFB`;
+    let xAxis = [];
+    let yAxis = [];
+    Axios.get(APIcall)
+      .then(({ data }) => {
+        let newData = data["Time Series (Daily)"];
+        for (var key in newData) {
+          xAxis.push(key.split(" ")[0]);
+          yAxis.push(newData[key]["2. high"]);
+        }
+        Axios.put('/updateticker', { ticker: string, xAxis, yAxis })
+          .then(() => {
+            console.log('Updated Backend Successfully')
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      })
+      return;
   }
   getData(event) {
     if (event.key === 'Enter') {
       let typedValue = document.getElementById('typedValue').value;
       document.getElementById('typedValue').value = '';
-      let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${typedValue}&apikey=KGGKYTO460K54GFB`
+      if (this.state.tickers.indexOf(typedValue) !== -1 ) {
+        this.updateBackend(typedValue)
+        return;
+      }
+      console.log(this.state.tickers.indexOf(typedValue))
+      let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${typedValue}&apikey=KGGKYTO460K54GFB`;
+      let xAxis = [];
+      let yAxis = [];
       Axios.get(APIcall)
         .then(({data}) => {
-          console.log(data)
-          let xAxis = [];
-          let yAxis = [];
           let newData = data["Time Series (Daily)"];
           for (var key in newData) {
             xAxis.push(key.split(" ")[0]);
@@ -38,6 +79,13 @@ class App extends React.Component {
             x: xAxis,
             y: yAxis
           })
+          Axios.post('/ticker', {ticker: typedValue, xAxis, yAxis})
+           .then(() => {
+             console.log('Stored in db')
+           })
+           .catch((err) => {
+             console.log('Error in post')
+           })
         })
         .catch((err) => {
           console.log(err)
