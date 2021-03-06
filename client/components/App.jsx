@@ -13,7 +13,7 @@ class App extends React.Component {
       chart: '',
       x: [],
       y: [],
-      tickers: ['TSLA', 'AAPL']
+      tickers: ['No Tickers']
     }
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
@@ -35,19 +35,25 @@ class App extends React.Component {
       })
   }
   updateBackend(string) {
-    let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${typedValue}&apikey=KGGKYTO460K54GFB`;
+    let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${string}&apikey=KGGKYTO460K54GFB`;
     let xAxis = [];
     let yAxis = [];
     Axios.get(APIcall)
       .then(({ data }) => {
+        console.log(data)
         let newData = data["Time Series (Daily)"];
         for (var key in newData) {
           xAxis.push(key.split(" ")[0]);
           yAxis.push(newData[key]["2. high"]);
         }
+        this.setState({
+          chart: string,
+          x: xAxis,
+          y: yAxis
+        })
         Axios.put('/updateticker', { ticker: string, xAxis, yAxis })
           .then(() => {
-            console.log('Updated Backend Successfully')
+            console.log('Updated')
           })
           .catch((err) => {
             console.log(err)
