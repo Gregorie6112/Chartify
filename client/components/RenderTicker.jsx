@@ -1,79 +1,17 @@
 import React from 'react';
 
-const RenderTicker = () => (
+const RenderTicker = (props) => (
   <>
-  <div className="tickerHolder">
-    TEST
+  {(props.tickers.length > 0) ?
+  props.tickers.map((el, index) => (
+  <div className="tickerHolder" key={index}>
+    {el}
   </div>
+  )) :
   <div className="tickerHolder">
-    TEST
+    No tickers
   </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
-  <div className="tickerHolder">
-    TEST
-  </div>
+  }
   </>
 );
 export default RenderTicker;

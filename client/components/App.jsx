@@ -12,23 +12,11 @@ class App extends React.Component {
     this.state = {
       chart: '',
       x: [],
-      y: []
+      y: [],
+      tickers: ['TSLA', 'AAPL']
     }
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
-  }
-  componentDidMount() {
-    // let xAxis = [];
-    // let yAxis = [];
-    // let newData = data["Time Series (Daily)"];
-    // for (var key in newData) {
-    //   xAxis.push(key.split(" ")[0]);
-    //   yAxis.push(newData[key]["2. high"]);
-    // }
-    // this.setState({
-    //   x: xAxis,
-    //   y: yAxis
-    // })
   }
   getData(event) {
     if (event.key === 'Enter') {
@@ -74,7 +62,7 @@ class App extends React.Component {
             }
           </Col>
           <Col className="buySection" >
-            <BuySection />
+            <BuySection ticker={this.state.chart} tickers={this.state.tickers}/>
           </Col>
         </Row>
       </Container>
