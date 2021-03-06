@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const URi = 'mongodb://localhost/chartify';
+const URI = 'mongodb://localhost/chartify';
+const path = require('path');
 
-let connection = mongoose.connect(URi, {useNewUrlParser: true, useUnifiedTopology: true})
+let connection = mongoose.connect(process.env.MONGODB_URI || URI, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
   console.log('connected')
 })
