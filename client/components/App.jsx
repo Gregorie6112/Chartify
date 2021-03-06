@@ -87,6 +87,11 @@ class App extends React.Component {
       let yAxis = [];
       Axios.get(APIcall)
         .then(({data}) => {
+          if (data["Error Message"]) {
+            let box = document.getElementById('typedValue').style;
+            box.border = '1px solid #ff5555';
+            return;
+          }
           let newData = data["Time Series (Daily)"];
           for (var key in newData) {
             xAxis.push(key.split(" ")[0]);
