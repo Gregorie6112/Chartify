@@ -15,6 +15,7 @@ class App extends React.Component {
       y: []
     }
     this.getData = this.getData.bind(this);
+    this.newSearch = this.newSearch.bind(this);
   }
   componentDidMount() {
     let xAxis = [];
@@ -36,10 +37,15 @@ class App extends React.Component {
       console.log(typedValue)
     }
   }
+  newSearch() {
+    this.setState({
+      chart: ''
+    })
+  }
   render() {
     return(
       <>
-      <NavBar />
+      <NavBar newSearch={this.newSearch}/>
       <Container className="main-app" fluid>
         <Row className="mainSection">
           <Col id="chartSection" className="chartSection" xs={10} md={9} lg={10}>
