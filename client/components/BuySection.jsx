@@ -13,7 +13,7 @@ const BuySection = (props) => {
         <button className="sellButton">SELL</button>
       </Col>
       <Col className="renderTickers">
-        <RenderTicker tickers={props.tickers}/>
+        <RenderTicker clickedTicker={props.clickedTicker} tickers={props.tickers}/>
       </Col>
     </>
   )

@@ -4,7 +4,7 @@ const RenderTicker = (props) => (
   <>
   {(props.tickers.length > 0) ?
   props.tickers.map((el, index) => (
-  <div className="tickerHolder" key={index}>
+  <div className="tickerHolder" key={index} onClick={() => props.clickedTicker(el)}>
     {el}
   </div>
   )) :

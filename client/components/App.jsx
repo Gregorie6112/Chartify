@@ -18,6 +18,7 @@ class App extends React.Component {
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
     this.updateBackend = this.updateBackend.bind(this);
+    this.clickedTicker = this.clickedTicker.bind(this);
   }
   componentDidMount() {
     let tickersInDb = [];
@@ -114,6 +115,10 @@ class App extends React.Component {
       chart: ''
     })
   }
+  clickedTicker(clickedName) {
+    // NAME OF TICKER CLICKED ON WORKING SEND IT BACKEND
+    console.log(clickedName)
+  }
   render() {
     return(
       <>
@@ -127,7 +132,7 @@ class App extends React.Component {
             }
           </Col>
           <Col className="buySection" >
-            <BuySection ticker={this.state.chart} tickers={this.state.tickers}/>
+            <BuySection clickedTicker={this.clickedTicker} ticker={this.state.chart} tickers={this.state.tickers}/>
           </Col>
         </Row>
       </Container>
