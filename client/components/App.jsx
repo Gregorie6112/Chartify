@@ -10,10 +10,17 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      chart: ''
+      chart: 'as'
+    }
+    this.getData = this.getData.bind(this);
+  }
+  getData(event) {
+    if (event.key === 'Enter') {
+      let typedValue = document.getElementById('typedValue').value;
+      document.getElementById('typedValue').value = '';
+      console.log(typedValue)
     }
   }
-
   render() {
     return(
       <>
@@ -22,7 +29,7 @@ class App extends React.Component {
         <Row className="mainSection">
           <Col id="chartSection" className="chartSection" xs={10} md={9} lg={10}>
             {(this.state.chart.length === 0) ?
-            <PleaseType /> :
+            <PleaseType getData={this.getData}/> :
             <RenderChart />
             }
           </Col>
