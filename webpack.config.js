@@ -21,7 +21,11 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      }
+      },
+      {
+        test: /\.js$/,
+        loader: 'ify-loader'
+    }
     ]
   },
   resolve: {

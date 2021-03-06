@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
+import RenderTicker from './RenderTicker.jsx';
 
 const BuySection = () => {
   return (
@@ -10,6 +11,9 @@ const BuySection = () => {
       </Col>
       <Col className="sellButtonHolder">
         <button className="sellButton">SELL</button>
+      </Col>
+      <Col className="renderTickers">
+        <RenderTicker />
       </Col>
     </>
   )
