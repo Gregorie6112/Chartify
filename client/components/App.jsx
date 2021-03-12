@@ -83,6 +83,9 @@ class App extends React.Component {
       }
       console.log(this.state.tickers.indexOf(typedValue))
       let APIcall = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${typedValue}&apikey=KGGKYTO460K54GFB`;
+      if (typedValue === 'BTC') {
+        APIcall = 'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=CNY&apikey=KGGKYTO460K54GFB'
+      }
       let xAxis = [];
       let yAxis = [];
       Axios.get(APIcall)
